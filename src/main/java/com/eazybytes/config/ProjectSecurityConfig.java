@@ -22,5 +22,7 @@ public class ProjectSecurityConfig {
         http.formLogin(Customizer.withDefaults());
         http.httpBasic(Customizer.withDefaults());
         return (SecurityFilterChain)http.build();
+
+
     }
 }
