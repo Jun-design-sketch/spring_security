@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -30,7 +32,9 @@ public class ProjectSecurityConfig {
     @Bean
     public InMemoryUserDetailsManager userDetailsManager() {
 
-        UserDetails admin = User.withDefaultPasswordEncoder()
+         /* Approach 1: Where we use withDefaultPasswordEncoder() method
+         while creating the user details */
+        /* UserDetails admin = User.withDefaultPasswordEncoder()
                 .username("admin")
                 .password("admin")
                 .authorities("admin")
@@ -40,6 +44,25 @@ public class ProjectSecurityConfig {
                 .password("user")
                 .authorities("read")
                 .build();
+        return new InMemoryUserDetailsManager(admin, user); */
+
+        /* Approach2: use NoOpPasswordEncoder */
+        UserDetails admin = User.withUsername("admin")
+                .password("admin")
+                .authorities("admin")
+                .build();
+        UserDetails user = User.withUsername("user")
+                .password("user")
+                .authorities("read")
+                .build();
         return new InMemoryUserDetailsManager(admin, user);
+    }
+
+    /*
+    * NoOpPasswordEncoder is not recommended for production usage.
+    * Use only for non-prod. */
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return NoOpPasswordEncoder.getInstance();
     }
 }
