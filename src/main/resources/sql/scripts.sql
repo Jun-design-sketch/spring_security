@@ -26,3 +26,6 @@ CREATE TABLE `customer` (
     `role` varchar(45) NOT NULL,
     PRIMARY KEY (`id`)
 );
+
+INSERT INTO `customer` (`email`, `pwd`, `role`)
+    VALUES ('johndoe@example.com', '54321', 'admin');
