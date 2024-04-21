@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configurers.AuthorizeH
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -22,10 +23,11 @@ public class ProjectSecurityConfig {
     @Bean
     @Order(2147483642)
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(
+        http.csrf().disable()
+            .authorizeHttpRequests(
             (requests) -> {
                 ((AuthorizeHttpRequestsConfigurer.AuthorizedUrl) requests
-                    .requestMatchers("/notices","/contact").permitAll()
+                    .requestMatchers("/notices","/contact", "/register").permitAll()
                     .requestMatchers("/myAccount","/myBalance","/myLoans","/myCards")).authenticated();
         });
         http.formLogin(Customizer.withDefaults());
@@ -67,11 +69,8 @@ public class ProjectSecurityConfig {
 //        return new JdbcUserDetailsManager(dataSource);
 //    }
 
-    /*
-    * NoOpPasswordEncoder is not recommended for production usage.
-    * Use only for non-prod. */
     @Bean
-    public PasswordEncoder passwordEncoder(){
-        return NoOpPasswordEncoder.getInstance();
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }
