@@ -44,3 +44,47 @@ build/
 # Maven
 log/
 target/
+
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Compiled output
+/bank-app-ui/dist
+/bank-app-ui/tmp
+/bank-app-ui/out-tsc
+/bank-app-ui/bazel-out
+
+# Node
+/bank-app-ui/node_modules
+/bank-app-ui/npm-debug.log
+/bank-app-ui/yarn-error.log
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Miscellaneous
+/bank-app-ui/.angular/cache
+.sass-cache/
+/bank-app-ui/connect.lock
+/bank-app-ui/coverage
+/bank-app-ui/libpeerconnection.log
+/bank-app-ui/testem.log
+/bank-app-ui/typings
+
+# System files
+.DS_Store
+Thumbs.db
+
