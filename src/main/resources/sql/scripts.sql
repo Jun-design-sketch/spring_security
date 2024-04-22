@@ -1,4 +1,5 @@
 create database eazybank;
+
 use eazybank;
 
 drop table `users`;
