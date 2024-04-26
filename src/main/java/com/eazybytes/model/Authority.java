@@ -35,7 +35,7 @@ public class Authority {
         return customer;
     }
 
-    public Customer setCustomer(Customer customer){
+    public void setCustomer(Customer customer){
         this.customer = customer;
     }
 }
