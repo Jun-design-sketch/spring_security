@@ -43,9 +43,9 @@ public class EazyBankUsernamePwdAuthenticationProvider implements Authentication
         }
     }
 
-    private List<GrantedAuthority> getGrantedAuthorities(Set<Authority> authorities){
+    private List<GrantedAuthority> getGrantedAuthorities(Set<Authority> authorities) {
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-        for (Authority authority: authorities) {
+        for (Authority authority : authorities) {
             grantedAuthorities.add(new SimpleGrantedAuthority(authority.getName()));
         }
         return grantedAuthorities;

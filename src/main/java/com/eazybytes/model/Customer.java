@@ -32,7 +32,7 @@ public class Customer {
     private String createDt;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy="customer",fetch=FetchType.EAGER)
     private Set<Authority> authorities;
 
     public int getId() {
@@ -91,11 +91,11 @@ public class Customer {
         this.createDt = createDt;
     }
 
-    public Set<Authority> getAuthorities(){
+    public Set<Authority> getAuthorities() {
         return authorities;
     }
 
-    public void setAuthorities(Set<Authority> authorities){
+    public void setAuthorities(Set<Authority> authorities) {
         this.authorities = authorities;
     }
 }
